@@ -28,7 +28,7 @@ const HireForm = (props) => {
       })
       .catch((error) => console.log(error));
     alert("Employee Hired");
-    props.path.history.goBack("/Search");
+    props.path.history.goBack("/");
   };
   return (
     <div>

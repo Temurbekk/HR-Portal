@@ -13,7 +13,7 @@ function App() {
       <Router>
         <NavBar />
         <Switch>
-          <Route path="/Search" component={SearchPage} />
+          <Route path="/" exact component={SearchPage} />
           <Route path="/Hire" component={HirePage} />
           <Route path="/Modify/:id" component={UpdatePage} />
         </Switch>

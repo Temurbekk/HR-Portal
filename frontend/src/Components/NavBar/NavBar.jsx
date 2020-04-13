@@ -23,7 +23,7 @@ const NavBar = () => {
       </div>
       <div className={`navbar-menu ${menuIsDisplayed ? "is-active" : ""}`}>
         <div className="navbar-end">
-          <Link className="navbar-item" to="/Search">
+          <Link className="navbar-item" to="/">
             Search
           </Link>
           <Link className="navbar-item" to="/Hire">

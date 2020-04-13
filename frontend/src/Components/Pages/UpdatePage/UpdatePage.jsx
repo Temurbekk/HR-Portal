@@ -53,7 +53,7 @@ const UpdatePage = (props) => {
       })
       .catch((error) => console.log(error));
     alert("Employee Information Updated!!");
-    props.history.goBack("/Search");
+    props.history.goBack("/");
   };
 
   const handleFire = () => {
@@ -61,7 +61,7 @@ const UpdatePage = (props) => {
       .delete(`/api/v1/employees/${id}`)
       .then((res) => console.log(res.data));
     alert("Employee Fired");
-    props.history.goBack("/Search");
+    props.history.goBack("/");
   };
   return (
     <div>

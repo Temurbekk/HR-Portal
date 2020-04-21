@@ -1,67 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
-const UpdatePage = (props) => {
+const AdmitForm = (props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
-  const [email, setEmail] = useState("");
-  const [number, setNumber] = useState("");
-  const [salary, setSalary] = useState("");
-  const id = props.match.params.id;
-
-  useEffect(() => {
-    axios
-      .get(`/api/v1/employees/${id}`)
-      .then((response) => {
-        setLastName(() => response.data.lastName);
-        setFirstName(() => response.data.firstName);
-        setAddress(() => response.data.address);
-        setEmail(() => response.data.emailId);
-        setSalary(() => response.data.salary);
-        setNumber(() => response.data.phone_no);
-      })
-      .catch((error) => console.log(error));
-  }, [id, props]);
+  const [gpa, setGpa] = useState(0);
+  const [year, setYear] = useState("");
+  const [graduationDate, setGraduationData] = useState("");
+  const [tuition, setTuition] = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const employee = {
+    const student = {
       firstName: firstName,
       lastName: lastName,
       address: address,
-      phone_no: number,
-      salary: salary,
-      emailId: email,
+      gpa: gpa,
+      year: year,
+      graduation_date: graduationDate,
+      tuition_due: tuition,
     };
-    console.log(employee);
-  };
+    console.log(student);
 
-  const handleUpdate = () => {
-    const employee = {
-      firstName: firstName,
-      lastName: lastName,
-      address: address,
-      phone_no: number,
-      salary: salary,
-      emailId: email,
-    };
     axios
-      .put(`/api/v1/employees/${id}`, employee)
+      .post("/api/students", student)
       .then((response) => {
         console.log(response);
       })
       .catch((error) => console.log(error));
-    alert("Employee Information Updated!!");
-    props.history.goBack("/");
-  };
-
-  const handleFire = () => {
-    axios
-      .delete(`/api/v1/employees/${id}`)
-      .then((res) => console.log(res.data));
-    alert("Employee Fired");
-    props.history.goBack("/");
+    alert("Student Admitted");
+    props.path.history.goBack("/");
   };
   return (
     <div>
@@ -110,52 +79,56 @@ const UpdatePage = (props) => {
         </div>
         <div className="field">
           <p className="control">
-            <label>Email Address</label>
+            <label>GPA</label>
             <input
               className="input"
-              value={email}
-              type="email"
+              value={gpa}
+              type="number"
               required
-              placeholder="Email Address"
-              onChange={(e) => setEmail(e.target.value)}
+              placeholder="GPA"
+              onChange={(e) => setGpa(e.target.value)}
             />
           </p>
         </div>
         <div className="field">
           <p className="control">
-            <label>Phone Number</label>
+            <label>Year</label>
             <input
               className="input"
-              value={number}
-              type="number"
-              placeholder="Phone Number"
-              onChange={(e) => setNumber(e.target.value)}
+              value={year}
+              type="text"
+              placeholder="Senior"
+              onChange={(e) => setYear(e.target.value)}
             />
           </p>
         </div>
         <div className="field">
           <p className="control">
-            <label>Salary</label>
+            <label>Year of Graduation</label>
             <input
               className="input"
-              value={salary}
-              type="number"
-              placeholder="Salary"
-              onChange={(e) => setSalary(e.target.value)}
+              value={graduationDate}
+              type="text"
+              placeholder="YYYY-MM-DD"
+              onChange={(e) => setGraduationData(e.target.value)}
             />
           </p>
         </div>
         <div className="field">
-          <p className="buttons">
-            <button
-              onClick={() => handleUpdate()}
-              className="button is-success"
-            >
-              Update Employee
-            </button>
-            <button onClick={() => handleFire()} className="button is-danger">
-              Fire Employee
-            </button>
+          <p className="control">
+            <label>Tuition Due</label>
+            <input
+              className="input"
+              value={tuition}
+              type="number"
+              placeholder="99999"
+              onChange={(e) => setTuition(e.target.value)}
+            />
+          </p>
+        </div>
+        <div className="field">
+          <p className="control">
+            <button className="button is-success">Admit</button>
           </p>
         </div>
       </form>
@@ -163,4 +136,4 @@ const UpdatePage = (props) => {
   );
 };
 
-export default UpdatePage;
+export default AdmitForm;

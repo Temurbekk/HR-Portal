@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from "react";
 
-import DataTable from "../../Layout/DataTable";
+import DataTable from "../../Util/DataTable";
 import useFetch from "../../DataFetchers/useFetch";
 
 const SearchPage = (props) => {
-  const { employees, isLoading } = useFetch("/api/v1/employees/");
+  const { students, isLoading } = useFetch("/api/students");
   const [search, setSearch] = useState("");
-  const [filteredEmployees, setFilteredEmployees] = useState();
+  const [filteredStudents, setFilteredStudents] = useState();
 
   useEffect(() => {
-    setFilteredEmployees(
-      employees.filter((employee) => {
-        return employee.firstName.toLowerCase().includes(search.toLowerCase());
-      })
-    );
-  }, [search, employees]);
+    const implementSearch = () => {
+      setFilteredStudents(
+        students.filter((student) => {
+          return student.firstName.toLowerCase().includes(search.toLowerCase());
+        })
+      );
+    };
+    implementSearch();
+  }, [search, students]);
 
   return (
     <div>
@@ -41,13 +44,14 @@ const SearchPage = (props) => {
                   <th>First Name</th>
                   <th>Last Name</th>
                   <th>Address</th>
-                  <th>Email Address</th>
-                  <th>Phone Number</th>
-                  <th>Salary</th>
+                  <th>GPA</th>
+                  <th>Year</th>
+                  <th>Graduation Date</th>
+                  <th>Tuition Due</th>
                 </tr>
               </thead>
               <tbody>
-                {filteredEmployees.map((rowData) => (
+                {filteredStudents.map((rowData) => (
                   <DataTable path={props} key={rowData.id} data={rowData} />
                 ))}
               </tbody>
@@ -60,4 +64,3 @@ const SearchPage = (props) => {
 };
 
 export default SearchPage;
-//http://localhost:8080/api/v1/person

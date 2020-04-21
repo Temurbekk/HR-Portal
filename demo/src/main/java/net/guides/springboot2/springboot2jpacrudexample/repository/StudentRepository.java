@@ -5,9 +5,9 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import net.guides.springboot2.springboot2jpacrudexample.model.Employee;
+import net.guides.springboot2.springboot2jpacrudexample.model.Student;
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee, UUID>{
+public interface StudentRepository extends JpaRepository<Student,UUID>{
 
 }

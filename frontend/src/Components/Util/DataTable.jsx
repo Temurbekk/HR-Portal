@@ -10,13 +10,16 @@ const DataTable = (props) => {
       <td>{row.firstName}</td>
       <td>{row.lastName}</td>
       <td>{row.address}</td>
-      <td>{row.emailId}</td>
-      <td>{row.phone_no}</td>
-      <td>${row.salary}</td>
+      <td>{row.gpa}</td>
+      <td>{row.year}</td>
+      <td>{row.graduation_date}</td>
+      <td>${row.tuition_due}</td>
       <td>
-        <Link className="button is-primary" to={`/Modify/${row.id}`}>
-          Update
-        </Link>
+        <div style={{ display: "inline-block" }}>
+          <Link className="button is-primary" to={`/Modify/${row.id}`}>
+            Update
+          </Link>
+        </div>
       </td>
     </tr>
   );

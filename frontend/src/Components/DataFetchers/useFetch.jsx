@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 
 export const useFetch = (url) => {
-  const [employees, setEmployees] = useState([]);
+  const [students, setStudents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch(url)
       .then((response) =>
         response.json().then((data) => {
-          setEmployees(data);
+          setStudents(data);
           setIsLoading(false);
         })
       )
       .catch((error) => console.log(error));
   }, [url]);
-  return { employees, isLoading };
+  return { students, isLoading };
 };
 
 export default useFetch;

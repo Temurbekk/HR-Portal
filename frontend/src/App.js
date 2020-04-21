@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import NavBar from "./Components/NavBar";
 import Search from "./Components/Pages/Search";
@@ -7,8 +8,6 @@ import Update from "./Components/Pages/Update";
 import Payment from "./Components/Pages/Payment";
 import Lib from "./assets/Lib.jpg";
 import "./";
-
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {
   return (

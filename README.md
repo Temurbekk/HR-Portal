@@ -20,13 +20,13 @@ Request Format  <br/>
 body: json <br/>
 
     {
-        "firstName": "Sam",<br/>
-        "lastName": "Smith", <br/>
-        "address": "23 Main St", <br/>
-        "gpa": 2.1, <br/>
-        "year": "Freshman", <br/>
-        "graduation_date": "2020-08-11", <br/>
-        "tuition_due": 9765.0 <br/>
+        "firstName": "Sam",
+        "lastName": "Smith",
+        "address": "23 Main St",
+        "gpa": 2.1,
+        "year": "Freshman",
+        "graduation_date": "2020-08-11",
+        "tuition_due": 9765.0
     }
 
 

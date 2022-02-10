@@ -15,7 +15,7 @@
     "bulma": "^0.8.1",
     "font-awesome": "^4.7.0",
     "http-proxy-middleware": "^1.0.3",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-phone-number-input": "^3.0.22",
